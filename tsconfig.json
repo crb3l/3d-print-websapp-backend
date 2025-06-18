@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["vite/client", "node"],
+    "types": [ "node"],
   },
   "include": ["./**/*.ts"],
   "exclude": ["node_modules", "dist"]
