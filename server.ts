@@ -5,7 +5,7 @@ import cors from 'cors';
 // import multer from 'multer';
 // import path from 'path';
 // import { fileURLToPath } from 'url';
-import submitOrderRoute from './api/submitOrder';
+import submitOrderRoute from './api/submitOrder.js';
 import resendConfirmationRoute from './api/resendConfirmation'
 
 // Define __filename and __dirname for ES modules
