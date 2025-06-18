@@ -1,4 +1,4 @@
-import supabase from '../utils/supabase';
+import supabase from '../utils/supabase.js';//.js for stupid render
 import { Router, Request, Response} from 'express';
 import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';

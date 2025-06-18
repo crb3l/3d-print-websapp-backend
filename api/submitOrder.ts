@@ -3,8 +3,8 @@ import { Router, Request, Response } from 'express';
 import { Resend } from 'resend';
 import dotenv from 'dotenv';
 import multer from 'multer';
-import CustomerOrderEmail from '../emails/order';
-import AdminOrderEmail from '../emails/adminOrder';
+import CustomerOrderEmail from '../emails/order.js';
+import AdminOrderEmail from '../emails/adminOrder.js';//added .js for stupid render
 
 dotenv.config();
 
