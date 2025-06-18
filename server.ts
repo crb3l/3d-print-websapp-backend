@@ -6,7 +6,7 @@ import cors from 'cors';
 // import path from 'path';
 // import { fileURLToPath } from 'url';
 import submitOrderRoute from './api/submitOrder.js';
-import resendConfirmationRoute from './api/resendConfirmation'
+import resendConfirmationRoute from './api/resendConfirmation.js' //added .js for the dumb render stuff
 
 // Define __filename and __dirname for ES modules
 // const __filename = fileURLToPath(import.meta.url); // for uploading stuff, but i am not doing that yet
