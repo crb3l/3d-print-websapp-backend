@@ -15,10 +15,11 @@ import resendConfirmationRoute from './api/resendConfirmation.js' //added .js fo
 // // Load environment variables
 dotenv.config();
 
-const express=require("express");
+// const express=require("express"); changed with import for stupid render
+import express from 'express';
 const app = express();
 const port = process.env.PORT || 3001;
-const path = require("path");
+// const path = require("path");
 
 // const storage = multer.memoryStorage(); //-- for uploading stuff, but i am not doing that yet
 
