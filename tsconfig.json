@@ -3,8 +3,8 @@
     "jsx": "react-jsx",
     "target": "ES2020",
     "module": "ESNext",
-    // "rootDir": "./",
-    "outDir": "dist",
+    "rootDir": "./",
+    "outDir": "./dist",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,6 +14,11 @@
     "allowSyntheticDefaultImports": true,
     "types": [ "node"],
   },
-  "include": ["./**/*.ts"],
+  "include": [
+    "./**/*.ts",
+    "**/*.ts",  // This covers all .ts files, including supabase.ts and vite-env.d.ts
+    "**/*.d.ts", // This explicitly covers all declaration files
+    "**/*.tsx"
+  ],
   "exclude": ["node_modules", "dist"]
 }
