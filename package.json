@@ -16,9 +16,10 @@
   "main": "dist/server.js",
   "scripts": {
     "build": "npx tsc",
-    "dev": "tsx server.ts",
+    "dev": "email dev",
     "start": "node dist/server.js",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "mail": "set PORT=3000 && react-scripts start"
   },
   "dependencies": {
     "@react-email/components": "^0.0.42",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@types/react": "^19.1.8",
+    "react-email": "^4.0.16",
     "typescript": "^5.8.3"
   }
 }
