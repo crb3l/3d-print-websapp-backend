@@ -21,7 +21,7 @@ interface MulterRequest extends Request {
 router.post('/submit-order', upload.single('modelFile'), async (req: MulterRequest, res: Response): Promise<void> => {
   try {
     const modelFile = req.file;
-    const { userEmail, userName, userAddress, material, quality, color, infill, quantity, message, volume, totalPrice, sendEmail } = req.body;
+    const { userEmail, userName, userAddress, material, quality, color, infill, quantity, message, volume, totalPrice, sendEmail, basePrice } = req.body;
 
     if (!userEmail || !userName) {
       res.status(400).json({ success: false, error: 'User email and name are required' });
@@ -31,18 +31,35 @@ router.post('/submit-order', upload.single('modelFile'), async (req: MulterReque
     const resend = new Resend(process.env.RESEND_API_KEY as string);
     const adminEmail = process.env.ADMIN_EMAIL as string || 'orders@info.treidee.ro';
 
+     // Calculate price breakdown
+    const basePriceFloat = parseFloat(basePrice || totalPrice); // Fallback to totalPrice if basePrice not provided
+    const totalPriceFloat = parseFloat(totalPrice);
+    const infillAdjustment = totalPriceFloat - basePriceFloat;
+
+    // Generate order date
+    const orderDate = new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
     const orderDetails = {
       orderNumber: `ORD-${Date.now().toString().slice(-6)}`,
     
       userName,
       userEmail,
       userAddress,
+      orderDate, // NEW: Current date/time
       material,
       quality,
       color,
       infill: `${infill}%`,
       quantity,
       volume: `${parseFloat(volume).toFixed(2)} cm³`,
+      basePrice: `${basePriceFloat.toFixed(2)}`, // NEW: Base price without adjustments
+      infillAdjustment: `${infillAdjustment >= 0 ? '+' : ''}${infillAdjustment.toFixed(2)}`, // NEW: Infill price adjustment
       totalPrice: `${parseFloat(totalPrice).toFixed(2)} RON`,
       message: message || 'No additional message',
       fileName: modelFile ? modelFile.originalname : 'No file attached',
