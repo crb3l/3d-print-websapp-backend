@@ -7,6 +7,7 @@ import cors from 'cors';
 // import { fileURLToPath } from 'url';
 import submitOrderRoute from './api/submitOrder.js';
 import resendConfirmationRoute from './api/resendConfirmation.js' //added .js for the dumb render stuff
+import createCheckoutSessionRoute from './api/createCheckoutSession';
 
 // Define __filename and __dirname for ES modules
 // const __filename = fileURLToPath(import.meta.url); // for uploading stuff, but i am not doing that yet
@@ -120,5 +121,7 @@ app.use('/api',resendConfirmationRoute);
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+app.use('/api', createCheckoutSessionRoute);
 
 export default app;

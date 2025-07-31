@@ -33,6 +33,7 @@
     "express-rate-limit": "^7.5.0",
     "multer": "^2.0.1",
     "resend": "^4.5.2",
+    "stripe": "^18.3.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.3"
   },
