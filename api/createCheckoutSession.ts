@@ -1,12 +1,13 @@
 import express from 'express';
-// import Stripe from 'stripe';
+import Stripe from 'stripe';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const router = express.Router();
 
-const Stripe=require('stripe')
+// const Stripe=require('stripe') this does not work because of ESM Modules, that the type of these scripts is for in config
+// so we have to go with import stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 router.post('/create-checkout-session', async (req, res) => {
