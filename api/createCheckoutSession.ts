@@ -21,12 +21,12 @@ router.post('/create-checkout-session', async (req, res) => {
       mode: 'payment',
       line_items: items.map((item: any) => ({
         price_data: {
-          currency: 'usd',
+          currency: item.product.currency.toLowerCase(), // Use the product's currency from DB
           product_data: {
-            name: item.name,
-            description: item.description,
+            name: item.product.name,
+            description: item.product.description,
           },
-          unit_amount: Math.round(item.price * 100), // cents
+          unit_amount: Math.round(item.product.price * 100), // Access price from product object
         },
         quantity: item.quantity,
       })),
