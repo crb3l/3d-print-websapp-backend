@@ -25,6 +25,7 @@ router.post('/create-checkout-session', async (req, res) => {
           product_data: {
             name: item.product.name,
             description: item.product.description,
+            images: item.product.images
           },
           unit_amount: Math.round(item.product.price * 100), // Access price from product object
         },
