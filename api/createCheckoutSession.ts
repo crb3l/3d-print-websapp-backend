@@ -45,7 +45,7 @@ router.post('/create-checkout-session', async (req, res) => {
       shipping_rate_data: {
         type: 'fixed_amount',
         fixed_amount: {
-          amount: 20,
+          amount: 2000,
           currency: 'eur',
         },
         display_name: 'Express Delivery',
@@ -65,7 +65,7 @@ router.post('/create-checkout-session', async (req, res) => {
       shipping_rate_data: {
         type: 'fixed_amount',
         fixed_amount: {
-          amount: 50,
+          amount: 5000,
           currency: 'eur',
         },
         display_name: 'Lightning Fast Delivery',
